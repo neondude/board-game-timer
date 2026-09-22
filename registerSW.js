@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/board-game-timer/sw.js', { scope: '/board-game-timer/' })})}
