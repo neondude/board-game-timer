@@ -3,18 +3,24 @@ import HomeView from "@/views/HomeView.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.VITE_BASE_PATH || "/"),
-  linkActiveClass: "active",
   routes: [
     {
       path: "/",
-      name: "home",
+      name: "setup",
       component: HomeView,
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("@/views/AboutView.vue"),
+      path: "/game/:id",
+      name: "game",
+      component: () => import("@/views/GameView.vue"),
+      props: true,
     },
+    {
+      path: "/history",
+      name: "history",
+      component: () => import("@/views/HistoryView.vue"),
+    },
+    { path: "/:pathMatch(.*)*", redirect: "/" },
   ],
 });
 

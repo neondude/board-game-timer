@@ -11,7 +11,30 @@ const __dirname = fileURLToPath(new URL(".", import.meta.url));
 // https://vite.dev/config/
 export default defineConfig({
   base: process.env.VITE_BASE_PATH || "/",
-  plugins: [vue(), vueDevTools(), VitePWA()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    VitePWA({
+      registerType: "autoUpdate",
+      manifest: {
+        name: "QuickTurn Board Game Timer",
+        short_name: "QuickTurn",
+        description: "A fast, flexible turn timer for tabletop games.",
+        theme_color: "#20211f",
+        background_color: "#f4f1e9",
+        display: "standalone",
+        orientation: "any",
+        icons: [
+          {
+            src: "icon.svg",
+            sizes: "any",
+            type: "image/svg+xml",
+            purpose: "any maskable",
+          },
+        ],
+      },
+    }),
+  ],
   resolve: {
     alias: {
       "@": fileURLToPath(new URL("./src", import.meta.url)),
